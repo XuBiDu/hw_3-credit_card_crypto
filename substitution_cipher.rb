@@ -42,6 +42,3 @@ module SubstitutionCipher
     end
   end
 end
-
-# enc = SubstitutionCipher::Caesar.encrypt("BOAZ SHMUELI", 1)
-# dec = SubstitutionCipher::Caesar.decrypt(enc, 1)
