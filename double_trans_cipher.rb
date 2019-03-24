@@ -50,7 +50,7 @@ module DoubleTranspositionCipher
     end
 
     def flatten_trim
-      @data.flatten.reject{ |c| c == SPECIAL_CHAR }.join
+      @data.flatten.reject { |c| c == SPECIAL_CHAR }.join
     end
   end
 

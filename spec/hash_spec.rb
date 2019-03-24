@@ -23,26 +23,50 @@ end
 
 describe 'Test hashing requirements' do
   describe 'Test regular hashing' do
-    describe 'Check hashes are consistently produced' do
-      # TODO: Check that each card produces the same hash if hashed repeatedly
+    it 'Should check hashes are never nil' do
+      cards[0].hash.wont_be_nil
+      cards[1].hash.wont_be_nil
+      cards[2].hash.wont_be_nil
     end
 
-    describe 'Check for unique hashes' do
-      # TODO: Check that each card produces a different hash than other cards
+    it 'Should check hashes are consistently produced' do
+      cards[0].hash.must_equal cards[0].hash
+      cards[1].hash.must_equal cards[1].hash
+      cards[2].hash.must_equal cards[2].hash
+    end
+
+    it 'Should check for unique hashes' do
+      cards[0].hash.wont_equal cards[1].hash
+      cards[0].hash.wont_equal cards[2].hash
+      cards[1].hash.wont_equal cards[2].hash
     end
   end
 
   describe 'Test cryptographic hashing' do
-    describe 'Check hashes are consistently produced' do
-      # TODO: Check that each card produces the same hash if hashed repeatedly
+    it 'Should check hashes are never nil' do
+      cards[0].hash_secure.wont_be_nil
+      cards[1].hash_secure.wont_be_nil
+      cards[2].hash_secure.wont_be_nil
     end
 
-    describe 'Check for unique hashes' do
-      # TODO: Check that each card produces a different hash than other cards
+    it 'Should check hashes are consistently produced' do
+      cards[0].hash_secure.must_equal cards[0].hash_secure
+      cards[1].hash_secure.must_equal cards[1].hash_secure
+      cards[2].hash_secure.must_equal cards[2].hash_secure
     end
 
-    describe 'Check regular hash not same as cryptographic hash' do
-      # TODO: Check that each card's hash is different from its hash_secure
+    it 'Should check for unique hashes' do
+      cards[0].hash_secure.wont_equal cards[1].hash_secure
+      cards[0].hash_secure.wont_equal cards[2].hash_secure
+      cards[1].hash_secure.wont_equal cards[2].hash_secure
+    end
+  end
+
+  describe 'Compare cryptographic and regular hashing' do
+    it 'Should check regular hash not same as cryptographic hash' do
+      cards[0].hash_secure.wont_equal cards[0].hash
+      cards[1].hash_secure.wont_equal cards[1].hash
+      cards[2].hash_secure.wont_equal cards[2].hash
     end
   end
 end
